@@ -1,1 +1,78 @@
-<h1>{{title}}</h1>
+<div class="container flex justify-center text-3xl text-white my-4 lg:flex">
+  <h1>{{ title }}</h1>
+</div>
+
+<!-- Container Cards -->
+<div class="container flex flex-col md:flex-row items-center justify-around mx-auto my-12 min-h-96">
+  <div class="mb-4 md:mb-0 md:mr-4">
+    <div>
+      <h5 class="bg-lime-500 rounded-md p-2 px-3 text-dark text-center my-2">PLAYER</h5>
+      <ng-container *ngIf="isLoading">
+        <img src="../assets/imgs/back_card.png" alt="card" />
+      </ng-container>
+      <ng-container *ngIf="handCards.length > 0 && !isLoading">
+        <img
+        [ngClass]="winner==='player' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [src]="handCards[handCards.length - 2].image" alt="" />
+      </ng-container>
+    </div>
+  </div>
+  <div class="mb-4 md:mb-0 md:mr-4">
+    <div>
+      <h5 class="bg-lime-500 rounded-md p-2 px-3 text-dark text-center my-2">CPU</h5>
+      <ng-container *ngIf="isLoading">
+        <img
+
+        src="../assets/imgs/back_card.png" alt="card" />
+      </ng-container>
+      <ng-container *ngIf="handCards.length > 0 && !isLoading">
+        <img
+        [ngClass]="winner==='cpu' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [src]="handCards[handCards.length - 1].image" alt="" />
+      </ng-container>
+    </div>
+  </div>
+</div>
+<!-- End Container Cards -->
+
+
+
+<!-- Container Buttons -->
+<div class="container flex justify-center my-4">
+  <ng-container *ngIf="remaining > 0">
+    <button
+    [disabled]="isLoading"
+      type="button"
+      class="sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      (click)="nextHand()"
+    >
+      NEXT HAND ({{remaining / 2}})
+    </button>
+  </ng-container>
+  <ng-container *ngIf="remaining === 0">
+    <button
+      type="button"
+      class="sm:text-xs md:text-sm lg:text-base xl:text-lg text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      (click)="init()"
+    >
+      START GAME
+    </button>
+  </ng-container>
+</div>
+<!-- End Container Buttons -->
+
+<!-- Container Message -->
+<!-- <div *ngIf="endGameMessage !== ''">
+
+</div> -->
+<!-- End Container Message -->
+
+<ng-container *ngIf="isShowModal === true">
+  <div class="modal-container" (click)="closeModal()">
+    <div class="modal text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+      <h1>{{endGameMessage}}</h1>
+    </div>
+  </div>
+</ng-container>
+
+
