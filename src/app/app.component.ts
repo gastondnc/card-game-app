@@ -67,7 +67,7 @@ export class AppComponent {
       card.value = Number(card.value)
       return card
     })]
-    console.log('HAND CARDS', this.handCards);
+    // console.log('HAND CARDS', this.handCards);
     this.setWinner();
   }
 
@@ -98,22 +98,22 @@ export class AppComponent {
     const indexCpu: number = this.handCards.length - 1;
     if (this.handCards[indexPlayer].value > this.handCards[indexCpu].value) {
       this.player = [...this.player, ...this.handCards]
-      console.log('WINNER PLAYER');
+      // console.log('WINNER PLAYER');
       this.winner = 'player';
       this.isDraw = false;
 
     } else if (this.handCards[indexPlayer].value < this.handCards[indexCpu].value) {
       this.cpu = [...this.cpu, ...this.handCards]
-      console.log('WINNER CPU');
+      // console.log('WINNER CPU');
       this.winner = 'cpu';
       this.isDraw = false;
     } else {
-      console.log('EMPATE');
+      // console.log('EMPATE');
       this.isDraw = true;
 
     }
     console.log('PLAYER', this.player)
-    console.log('CPU', this.cpu)
+    // console.log('CPU', this.cpu)
     if (this.remaining === 0) {
       this.endGame()
     }
@@ -128,7 +128,7 @@ export class AppComponent {
       this.handCards = [];
     }
     this.getHandCards();
-    console.log('-----------------------')
+    // console.log('-----------------------')
 
   }
 
