@@ -12,7 +12,7 @@
       </ng-container>
       <ng-container *ngIf="handCards.length > 0 && !isLoading">
         <img
-        [ngClass]="winner==='player' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [ngClass]="winner==='player' ? 'shadow-xl  dark:shadow-lime-400': 'none' && tie==='empate' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
         [src]="handCards[handCards.length - 2].image" alt="" />
       </ng-container>
     </div>
@@ -22,12 +22,11 @@
       <h5 class="bg-lime-500 rounded-md p-2 px-3 text-dark text-center my-2">CPU</h5>
       <ng-container *ngIf="isLoading">
         <img
-
         src="../assets/imgs/back_card.png" alt="card" />
       </ng-container>
       <ng-container *ngIf="handCards.length > 0 && !isLoading">
         <img
-        [ngClass]="winner==='cpu' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [ngClass]="winner==='cpu' ? 'shadow-xl  dark:shadow-lime-400': 'none'&& tie==='empate' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
         [src]="handCards[handCards.length - 1].image" alt="" />
       </ng-container>
     </div>

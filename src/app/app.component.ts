@@ -20,6 +20,7 @@ export class AppComponent {
   public player: Card[] = [];
   public remaining: number = 0;
   public winner = '';
+  public tie = '';
   public endGameMessage: string = '';
 
   constructor() {
@@ -109,6 +110,7 @@ export class AppComponent {
       this.isDraw = false;
     } else {
       // console.log('EMPATE');
+      this.tie = 'empate';
       this.isDraw = true;
 
     }
@@ -150,8 +152,7 @@ export class AppComponent {
         this.endGameMessage = `OOOOOH PLAYER, PERDISTE!!! LA CPU SE HA QUEDADO CON ${this.cpu.length} CARTAS`
         break;
       default:
-        this.endGameMessage = 'EMPATARON CARA CULOS'
-        break;
+        this.endGameMessage = 'EMPATARON'
     }
     this.openModal()
   }
