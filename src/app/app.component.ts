@@ -19,8 +19,8 @@ export class AppComponent {
   public cpu: Card[] = [];
   public player: Card[] = [];
   public remaining: number = 0;
-  public winner = '';
-  public tie = '';
+  public winner: string = '';
+  public tie: string = '';
   public endGameMessage: string = '';
 
   constructor() {
@@ -118,6 +118,7 @@ export class AppComponent {
   // Botón para ejecutar la jugada siguiete //
   nextHand() {
     this.winner = '';
+    this.tie = ''
     if (!this.isDraw) {
       this.handCards = [];
     }
@@ -159,10 +160,10 @@ export class AppComponent {
   }
 
 
-
-
-
 }
+
+
+
 
 
 
