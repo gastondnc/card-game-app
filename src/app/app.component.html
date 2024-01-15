@@ -16,7 +16,7 @@
       </ng-container>
       <ng-container *ngIf="handCards.length > 0 && !isLoading">
         <img
-        [ngClass]="winner==='player' ? 'shadow-xl  dark:shadow-lime-400': 'none' && tie==='empate' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [ngClass]="resultHand==='player' || resultHand === 'tie' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
         [src]="handCards[handCards.length - 2].image" alt="front-card" />
       </ng-container>
     </div>
@@ -35,7 +35,7 @@
       </ng-container>
       <ng-container *ngIf="handCards.length > 0 && !isLoading">
         <img
-        [ngClass]="winner==='cpu' ? 'shadow-xl  dark:shadow-lime-400': 'none'&& tie==='empate' ? 'shadow-xl  dark:shadow-lime-400': 'none'"
+        [ngClass]="resultHand === 'cpu' || resultHand === 'tie' ? 'shadow-xl  dark:shadow-lime-400': 'none' "
         [src]="handCards[handCards.length - 1].image" alt="front-card" />
       </ng-container>
     </div>

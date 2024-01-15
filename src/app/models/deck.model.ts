@@ -31,3 +31,9 @@ export enum Suit {
   Hearts = "HEARTS",
   Spades = "SPADES",
 }
+
+export enum ResultHand {
+  PLAYER = 'player',
+  CPU = 'cpu',
+  TIE = 'tie'
+}

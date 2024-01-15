@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NEW_CARDS, NEW_DECK } from './utils/deck-api';
-import { Card, CardsResponse, Deck } from './models/deck.model';
+import { Card, CardsResponse, Deck, ResultHand } from './models/deck.model';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +19,7 @@ export class AppComponent {
   public cpu: Card[] = [];
   public player: Card[] = [];
   public remaining: number = 0;
-  public winner: string = '';
-  public tie: string = '';
+  public resultHand: 'player' | 'cpu' | 'tie' | ''= ''
   public endGameMessage: string = '';
 
   constructor() {
@@ -97,15 +96,15 @@ export class AppComponent {
     const indexCpu: number = this.handCards.length - 1;
     if (this.handCards[indexPlayer].value > this.handCards[indexCpu].value) {
       this.player = [...this.player, ...this.handCards]
-      this.winner = 'player';
+      this.resultHand = ResultHand.PLAYER;
       this.isDraw = false;
 
     } else if (this.handCards[indexPlayer].value < this.handCards[indexCpu].value) {
       this.cpu = [...this.cpu, ...this.handCards]
-      this.winner = 'cpu';
+      this.resultHand = ResultHand.CPU;
       this.isDraw = false;
     } else {
-      this.tie = 'empate';
+      this.resultHand = ResultHand.TIE;
       this.isDraw = true;
 
     }
@@ -117,8 +116,7 @@ export class AppComponent {
 
   // Botón para ejecutar la jugada siguiete //
   nextHand() {
-    this.winner = '';
-    this.tie = ''
+    this.resultHand = '';
     if (!this.isDraw) {
       this.handCards = [];
     }
@@ -144,7 +142,7 @@ export class AppComponent {
         this.endGameMessage = `OOOOOH PLAYER, PERDISTE!!! LA CPU SE HA QUEDADO CON ${this.cpu.length} CARTAS`
         break;
       default:
-        this.endGameMessage = 'EMPATARON'
+        this.endGameMessage = 'EMPATE'
     }
     this.openModal()
   }
